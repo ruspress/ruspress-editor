@@ -20,9 +20,11 @@
     "source_ids": [
       "0bfb025fb3600917b587014ce87ad9f07c59dbf045d2e0a10e77183e5fe9fb78"
     ],
-    "status": "pending",
+    "status": "published",
     "has_photo": true,
     "created_at": "2026-11-24T20:48:07.378931+03:00",
-    "fingerprint": "297a349876bdfd8277fd7f80a1b570d848900936c89d8d98f8e0244f753e77ed"
+    "fingerprint": "297a349876bdfd8277fd7f80a1b570d848900936c89d8d98f8e0244f753e77ed",
+    "message_id": 292,
+    "published_at": "2026-11-24T20:48:09.864490+03:00"
   }
 ]
