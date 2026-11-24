@@ -69,8 +69,9 @@ for source, url in SOURCES.items():
                 "link": link,
             })
 
-    except Exception as e:
-        print(f"Ошибка источника: {source}: {type(e).__name__}")
+        except Exception as e:
+        print(f"ERROR: {model}: {type(e).__name__}: {e}", flush=True)
+        time.sleep(15)
 
 news.sort(key=lambda x: x["age"])
 
