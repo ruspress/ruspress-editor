@@ -52,11 +52,13 @@
     "source_ids": [
       "323777ae2651373990ef7fbeeee883bae49f73ea532c13d461d072635ff3fe55"
     ],
-    "status": "pending",
+    "status": "published",
     "has_photo": true,
     "photo_source": null,
     "photo_kind": "card",
     "created_at": "2026-11-24T22:45:52.237394+03:00",
-    "fingerprint": "c35d1e3ce295827715cd4459d850d7d50a736e338bab1e65e24c03309f56de25"
+    "fingerprint": "c35d1e3ce295827715cd4459d850d7d50a736e338bab1e65e24c03309f56de25",
+    "message_id": 296,
+    "published_at": "2026-11-24T22:45:54.516294+03:00"
   }
 ]
