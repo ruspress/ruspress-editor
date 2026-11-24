@@ -1,0 +1,71 @@
+name: Groq Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Groq
+        run: pip install groq
+
+      - name: Test Groq API
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          python - <<'PY'
+          from groq import Groq
+
+          client = Groq()
+
+          models = client.models.list()
+
+          print("Доступные модели:")
+          for model in models.data:
+              print(model.id)
+
+          candidates = [
+              "llama-3.3-70b-versatile",
+              "llama-3.1-8b-instant",
+              "openai/gpt-oss-120b",
+              "openai/gpt-oss-20b",
+          ]
+
+          available = {m.id for m in models.data}
+
+          for model in candidates:
+              if model not in available:
+                  continue
+
+              try:
+                  print(f"Тестируем: {model}")
+
+                  response = client.chat.completions.create(
+                      model=model,
+                      messages=[
+                          {
+                              "role": "user",
+                              "content": "Напиши короткое приветствие редакции ИА Российская пресса на русском языке."
+                          }
+                      ],
+                      max_completion_tokens=512
+                  )
+
+                  print(response.choices[0].message.content)
+                  print(f"SUCCESS: {model}")
+                  break
+
+              except Exception as e:
+                  print(f"ERROR: {model}: {e}")
+          else:
+              raise SystemExit("Нет работающих моделей")
+          PY
