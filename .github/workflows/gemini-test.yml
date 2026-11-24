@@ -1,0 +1,31 @@
+name: Gemini Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install google-genai
+
+      - name: Test Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python - <<'PY'
+          from google import genai
+
+          client = genai.Client()
+
+          for model in client.models.list():
+              if "generateContent" in (model.supported_actions or []):
+                  print(model.name)
+
+          PY
