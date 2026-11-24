@@ -21,13 +21,38 @@ jobs:
         run: |
           python - <<'PY'
           from google import genai
+          from google.genai import errors
 
           client = genai.Client()
 
-          response = client.models.generate_content(
-              model="gemini-3.8-flash",
-              contents="Напиши короткую тестовую новость для ИА «Российская пресса» о запуске автоматизированной редакции. Не выдумывай факты. Используй профессиональный журналистский стиль."
-          )
+          models = [
+              "gemini-3.8-flash",
+              "gemini-3.7-flash",
+              "gemini-3.6-flash",
+              "gemini-3.5-flash",
+              "gemini-3.5-flash-lite",
+              "gemini-3.1-flash-lite"
+          ]
 
-          print(response.text)
+          for model in models:
+              print(f"Testing: {model}")
+
+              try:
+                  response = client.models.generate_content(
+                      model=model,
+                      contents="Напиши короткое сообщение об успешном техническом тестировании ИИ-редактора. Не добавляй неподтвержденных фактов."
+                  )
+
+                  if response.text:
+                      print(f"SUCCESS: {model}")
+                      print(response.text)
+                      break
+
+              except errors.APIError as e:
+                  print(f"ERROR: {model}: {e.code}")
+                  if e.code not in (404, 429, 500, 502, 503, 504):
+                      raise
+
+          else:
+              raise SystemExit("No working model found")
           PY
