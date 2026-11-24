@@ -24,8 +24,10 @@ jobs:
 
           client = genai.Client()
 
-          for model in client.models.list():
-              if "generateContent" in (model.supported_actions or []):
-                  print(model.name)
+          response = client.models.generate_content(
+              model="gemini-2.5-flash",
+              contents="Напиши короткую тестовую новость для ИА «Российская пресса» о запуске автоматизированной редакции. Не выдумывай факты. Используй профессиональный журналистский стиль."
+          )
 
+          print(response.text)
           PY
