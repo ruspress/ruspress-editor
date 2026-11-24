@@ -1,0 +1,49 @@
+name: RusPress Manual Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Подтверждаю отправку новости в канал"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ruspress-editor
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: ${{ inputs.confirm }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Configure Git
+        run: |
+          git config user.name "RusPress Editor"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Check Python syntax
+        run: |
+          python -m py_compile editor.py manual_publish.py
+
+      - name: Publish approved news
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: python -u manual_publish.py
