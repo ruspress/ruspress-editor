@@ -9,6 +9,7 @@ permissions:
 jobs:
   collect:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - uses: actions/checkout@v4
@@ -18,12 +19,13 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install feedparser google-genai
+        run: pip install feedparser google-genai groq
 
       - name: Collect news
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python news.py
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python -u news.py
 
       - name: Save drafts
         if: ${{ hashFiles('drafts.json') != '' }}
