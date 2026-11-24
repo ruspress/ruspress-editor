@@ -1,6 +1,12 @@
 name: RusPress News
 
 on:
+  schedule:
+    - cron: '0 5,8,11,14,17 * * *'
+    - cron: '45 5,8,11,14,17 * * *'
+    - cron: '30 6,9,12,15,18 * * *'
+    - cron: '15 7,10,13,16,19 * * *'
+
   workflow_dispatch:
     inputs:
       mode:
@@ -26,11 +32,11 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: main
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -52,8 +58,26 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          EDITOR_MODE: ${{ inputs.mode }}
-        run: python -u editor.py
+          AUTO_PUBLISH: ${{ vars.AUTO_PUBLISH }}
+          REQUESTED_MODE: ${{ inputs.mode }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          export EDITOR_MODE=test
+
+          if [ "$AUTO_PUBLISH" = "true" ]; then
+            if [ "$EVENT_NAME" = "schedule" ]; then
+              export EDITOR_MODE=auto
+            elif [ "$REQUESTED_MODE" = "auto" ]; then
+              export EDITOR_MODE=auto
+            elif [ "$REQUESTED_MODE" = "single" ]; then
+              export EDITOR_MODE=single
+            fi
+          fi
+
+          echo "AUTO_PUBLISH=$AUTO_PUBLISH"
+          echo "EDITOR_MODE=$EDITOR_MODE"
+
+          python -u editor.py
 
       - name: Save editorial results
         if: always()
@@ -64,4 +88,4 @@ jobs:
             drafts.json
             approved.json
             published.json
-          retention-days: 7
+          retention-days: 3
