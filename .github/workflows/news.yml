@@ -6,6 +6,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ruspress-editor
+  cancel-in-progress: false
+
 jobs:
   collect:
     runs-on: ubuntu-latest
@@ -19,7 +23,11 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install feedparser google-genai groq
+        run: |
+          pip install feedparser requests google-genai groq
+
+      - name: Check Python syntax
+        run: python -m py_compile news.py
 
       - name: Collect news
         env:
@@ -28,8 +36,8 @@ jobs:
         run: python -u news.py
 
       - name: Save drafts
-        if: ${{ hashFiles('drafts.json') != '' }}
         uses: actions/upload-artifact@v4
         with:
           name: ruspress-drafts
           path: drafts.json
+          retention-days: 7
