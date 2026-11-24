@@ -2,10 +2,8 @@ name: RusPress News
 
 on:
   schedule:
-    - cron: '0 5,8,11,14,17 * * *'
-    - cron: '45 5,8,11,14,17 * * *'
-    - cron: '30 6,9,12,15,18 * * *'
-    - cron: '15 7,10,13,16,19 * * *'
+    - cron: '0,30 4 * * *'
+    - cron: '*/15 5-19 * * *'
 
   workflow_dispatch:
     inputs:
@@ -42,7 +40,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install feedparser requests google-genai groq trafilatura
+          pip install feedparser requests google-genai groq trafilatura pillow
 
       - name: Configure Git
         run: |
@@ -87,5 +85,8 @@ jobs:
           path: |
             drafts.json
             approved.json
+            rejected.json
             published.json
+            queue.json
+            news-card.jpg
           retention-days: 3
