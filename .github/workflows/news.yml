@@ -2,21 +2,33 @@ name: RusPress News
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Режим редакции"
+        required: true
+        default: "test"
+        type: choice
+        options:
+          - test
+          - single
+          - auto
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: ruspress-editor
   cancel-in-progress: false
 
 jobs:
-  collect:
+  editor:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-python@v5
         with:
@@ -26,27 +38,30 @@ jobs:
         run: |
           pip install feedparser requests google-genai groq trafilatura
 
+      - name: Configure Git
+        run: |
+          git config user.name "RusPress Editor"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Check Python syntax
         run: |
-          python -m py_compile news.py publish.py
+          python -m py_compile news.py publish.py editor.py
 
-      - name: Collect news
+      - name: Run editorial system
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python -u news.py
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          EDITOR_MODE: ${{ inputs.mode }}
+        run: python -u editor.py
 
-      - name: Editorial verification
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          PUBLISH_ENABLED: "false"
-        run: python -u publish.py
-
-      - name: Save results
+      - name: Save editorial results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ruspress-reviewed
+          name: ruspress-editor-results
           path: |
             drafts.json
             approved.json
+            published.json
           retention-days: 7
