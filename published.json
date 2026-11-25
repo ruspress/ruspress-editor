@@ -77,5 +77,20 @@
     "fingerprint": "aedaf3da94615f5301f605aa8ff69ec5511551baa599a986bef4e9dbfaaa0c17",
     "message_id": 297,
     "published_at": "2026-11-25T08:00:51.297541+03:00"
+  },
+  {
+    "date": "2026-11-25",
+    "slot": "2026-11-25:queue:1",
+    "category": "soloviev",
+    "headline": "Легкий самолет совершил аварийную посадку перед домом в Луисвилле, Кентукки",
+    "source_ids": [
+      "5c1be09149882524a003a62506da9206ce7b0b8787e9d51cac694d6a355455c2"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": "https://t.me/SolovievLive/394164",
+    "photo_kind": "video",
+    "created_at": "2026-11-25T08:55:24.401928+03:00",
+    "fingerprint": "8cdce0398641988ec23e868739deb388ead6b24e242a475ecd88718ad5975c2c"
   }
 ]
