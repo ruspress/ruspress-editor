@@ -94,5 +94,20 @@
     "fingerprint": "8cdce0398641988ec23e868739deb388ead6b24e242a475ecd88718ad5975c2c",
     "message_id": 298,
     "published_at": "2026-11-25T08:55:26.908282+03:00"
+  },
+  {
+    "date": "2026-11-25",
+    "slot": "2026-11-25:queue:2",
+    "category": "own",
+    "headline": "Исследование показало ROI PAM‑систем в России на уровне 201 %",
+    "source_ids": [
+      "38f8b1d596438a11ed62ae6c925b677e5e7148b9174e6323c8993c0792318b3d"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-25T10:06:03.755013+03:00",
+    "fingerprint": "d50fe5243340f79d555f28a9ee6493ff951b4a020d31b1496f2f768d5e37a685"
   }
 ]
