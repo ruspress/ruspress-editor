@@ -179,5 +179,20 @@
     "fingerprint": "effcfce64cf964a3bbcb58230c258d95c8d59a5df4b3169227c1dc4716bf17ad",
     "message_id": 304,
     "published_at": "2026-11-25T14:53:53.567939+03:00"
+  },
+  {
+    "date": "2026-11-25",
+    "slot": "2026-11-25:queue:7",
+    "category": "federal",
+    "headline": "В США выпущен шоколад с активным ингредиентом препарата для снижения веса",
+    "source_ids": [
+      "5646b3d3bf17c8b742d2877f7ad8140d5e1fc01b32a0b99a77503355fb68c86f"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-25T16:07:34.631981+03:00",
+    "fingerprint": "e80fd4c1cc001e69d7219a5520806a5cc580e30d3d56cc845d0b55acbb0597d0"
   }
 ]
