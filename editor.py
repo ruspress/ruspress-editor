@@ -7,15 +7,17 @@ from html import unescape
 import requests
 from PIL import Image, ImageDraw, ImageFont
 from photos import find_photo
+import telegram_source
 
 CHANNEL = '@russianpressnews'
 HISTORY, QUEUE, APPROVED = map(Path, ('published.json','queue.json','approved.json'))
 MODE = os.getenv('EDITOR_MODE','test')
 MOSCOW = ZoneInfo('Europe/Moscow')
-LIMITS = {'own':4,'federal':8,'regional':8}
-RESERVE = {'own':6,'federal':12,'regional':12}
-LABELS = {'own':'МАТЕРИАЛЫ РЕДАКЦИИ','federal':'РОССИЯ И МИР','regional':'РЕГИОНЫ И ЭКОНОМИКА'}
-ORDER = ['federal','regional','own','federal','regional']*4
+LIMITS = {'own':4,'federal':8,'regional':8,'soloviev':10}
+RESERVE = {'own':6,'federal':12,'regional':12,'soloviev':12}
+LABELS = {'own':'МАТЕРИАЛЫ РЕДАКЦИИ','federal':'РОССИЯ И МИР','regional':'РЕГИОНЫ И ЭКОНОМИКА','soloviev':'РОССИЯ И МИР'}
+ORDER = (['federal','soloviev','regional','own','soloviev','federal','regional','soloviev',
+          'federal','regional','soloviev','own','federal','regional','soloviev'] * 2)
 MAX_AGE = 86400
 
 def load_json(path):
@@ -122,6 +124,11 @@ def caption_length(message):
 
 def prepare_media(d,history,daily):
     message=d['message']; photo=None; source=None; kind=None
+    if d['category'] == 'soloviev':
+        original = next(s for s in d['sources'] if telegram_source.POST.fullmatch(s['link']))
+        if caption_length(message) <= 1024:
+            return message,None,original['link'],original['media_kind']
+        return message,None,None,None
     desired=((len(daily)+1)*7+9)//10
     if sum(bool(x.get('has_photo')) for x in daily)<desired:
         try:
@@ -136,18 +143,26 @@ def prepare_media(d,history,daily):
             except Exception as e: print('Ошибка карточки:',type(e).__name__)
     return message,photo,source,kind
 
-def send_message(message,photo):
+def send_message(message,photo,source=None,kind=None):
     token=os.environ['TELEGRAM_BOT_TOKEN']
     try:
         base=f'https://api.telegram.org/bot{token}/'
-        if photo:
+        if kind in ('photo','video') and source and telegram_source.POST.fullmatch(source):
+            post_id = int(telegram_source.POST.fullmatch(source)[1])
+            r = requests.post(base+'copyMessage', json={'chat_id':CHANNEL,
+                'from_chat_id':'@'+telegram_source.CHANNEL, 'message_id':post_id,
+                'caption':message, 'parse_mode':'HTML'}, timeout=45)
+            if r.status_code == 400 and r.json().get('ok') is False:
+                # Deleted, protected or inaccessible original. The reviewed text links to it.
+                return send_message(message,None)
+        elif photo:
             with open(photo,'rb') as f:
                 r=requests.post(base+'sendPhoto',data={'chat_id':CHANNEL,'caption':message,'parse_mode':'HTML'},files={'photo':f},timeout=45)
         else:
             r=requests.post(base+'sendMessage',json={'chat_id':CHANNEL,'text':message,'parse_mode':'HTML','link_preview_options':{'is_disabled':True}},timeout=30)
         data=r.json()
         if not data.get('ok'): raise RuntimeError('Telegram rejected')
-        return data['result']['message_id']
+        return data['result']['message_id'],bool(photo) or kind in ('photo','video')
     except Exception: raise RuntimeError('Ошибка Telegram. Проверь запись pending и канал.') from None
 
 def daily_records(history,now):
@@ -156,7 +171,7 @@ def daily_records(history,now):
 def candidate(queue,history):
     now=datetime.now(MOSCOW); minute=now.hour*60+now.minute
     if not 480<=minute<1380: return None
-    daily=daily_records(history,now); due=min(20,(minute-480)//45+1)
+    daily=daily_records(history,now); due=min(len(ORDER),(minute-480)//30+1)
     if len(daily)>=due: return None
     used=counts(daily); wanted=counts([{'category':c} for c in ORDER[:due]])
     options=[d for d in queue if fresh(d) and used[d['category']]<min(LIMITS[d['category']],wanted[d['category']])]
@@ -170,7 +185,11 @@ def publish(d,history,queue):
     now=datetime.now(MOSCOW)
     record={'date':now.date().isoformat(),'slot':f'{now.date()}:queue:{len(daily)}','category':d['category'],'headline':d['headline'],'source_ids':d['source_ids'],'status':'pending','has_photo':bool(photo),'photo_source':source,'photo_kind':kind,'created_at':now.isoformat(),'fingerprint':hashlib.sha256(message.encode()).hexdigest()}
     history.append(record); save_state(history,queue)
-    record['message_id']=send_message(message,photo); record['status']='published'; record['published_at']=datetime.now(MOSCOW).isoformat()
+    record['message_id'], attached = send_message(message,photo,source,kind)
+    if not attached:
+        record.update(photo_source=None, photo_kind=None)
+    record['has_photo'] = attached and kind != 'video'
+    record['status']='published'; record['published_at']=datetime.now(MOSCOW).isoformat()
     queue.remove(d); save_state(history,queue)
     print('SUCCESS: новость опубликована',record['message_id'],'Изображение:',kind)
     return True
