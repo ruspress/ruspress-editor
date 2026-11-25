@@ -60,5 +60,20 @@
     "fingerprint": "c35d1e3ce295827715cd4459d850d7d50a736e338bab1e65e24c03309f56de25",
     "message_id": 296,
     "published_at": "2026-11-24T22:45:54.516294+03:00"
+  },
+  {
+    "date": "2026-11-25",
+    "slot": "2026-11-25:queue:0",
+    "category": "federal",
+    "headline": "Польша и Великобритания согласовали совместную разработку ракеты средней дальности",
+    "source_ids": [
+      "0740e1bcafe30823b589c514220866b6acb242d14dfba8599be6eb62b189caac"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-25T08:00:49.452792+03:00",
+    "fingerprint": "aedaf3da94615f5301f605aa8ff69ec5511551baa599a986bef4e9dbfaaa0c17"
   }
 ]
