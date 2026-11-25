@@ -213,5 +213,20 @@
     "fingerprint": "5a8d9c0eacf0f7dc483fa0446f2a8b5235ef90b4b5131f7577dbc8e1616bec3d",
     "message_id": 306,
     "published_at": "2026-11-25T17:29:58.095680+03:00"
+  },
+  {
+    "date": "2026-11-25",
+    "slot": "2026-11-25:queue:9",
+    "category": "regional",
+    "headline": "Разлив нефтепродуктов в Муринском ручье продолжается в Петербурге",
+    "source_ids": [
+      "d8110d7cbec52c2e5157160aac34fbdbafc3280398a7f9ff81f927587aeb06f2"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": null,
+    "photo_kind": null,
+    "created_at": "2026-11-25T18:37:13.229271+03:00",
+    "fingerprint": "5a77a3f4c8d979301b5e8b9d533a6bfcdba1d0c39eb40854dde0eea3f76859c0"
   }
 ]
