@@ -17,7 +17,10 @@ from groq import Groq
 from google import genai
 from google.genai import types
 
+import telegram_source
+
 SOURCES = {
+    telegram_source.NAME: telegram_source.FEED,
     "Российская пресса": "https://ruspress.ru/feed/",
     "ТАСС": "https://tass.ru/rss/v2.xml",
     "РИА Новости": "https://ria.ru/export/rss2/index.xml",
@@ -55,6 +58,7 @@ QUOTAS = {
     "own": 1,
     "federal": 2,
     "regional": 2,
+    "soloviev": 2,
 }
 
 CHANNEL_URL = "https://t.me/russianpressnews"
@@ -107,6 +111,10 @@ def collect_source(source, url):
     materials = []
 
     try:
+        if source == telegram_source.NAME:
+            return [item for item in telegram_source.collect()
+                    if item["id"] not in published_ids
+                    and not any(similar(item["title"], old) for old in published_titles)]
         response = requests.get(
             url,
             timeout=15,
@@ -246,9 +254,12 @@ sources_by_id = {
 PROMPT = """
 Ты редактор ИА «Российская пресса».
 
-Подготовь до пяти новостей для Telegram.
+Подготовь до семи новостей для Telegram.
 
 СТРОГИЕ КВОТЫ:
+soloviev — до 2 отдельных новостей с фото или видео СОЛОВЬЁВ LIVE за подборку.
+Исключай анонсы, агитацию, жестокие кадры и оперативные сведения о военных позициях.
+Сохраняй атрибуцию кадров и заявлений. Если кадры или обстоятельства неясны, пропускай.
 own — максимум 1 собственный материал.
 federal — максимум 2 федеральные
 или международные новости.
@@ -324,6 +335,7 @@ def prepare_drafts(raw):
         "own": 0,
         "federal": 0,
         "regional": 0,
+        "soloviev": 0,
     }
 
     for post in posts:
@@ -384,6 +396,10 @@ def prepare_drafts(raw):
             sources_by_id[i]
             for i in ids
         ]
+
+        has_channel = any(s["source"] == telegram_source.NAME for s in sources)
+        if has_channel != (category == "soloviev"):
+            continue
 
         if category == "own":
             if not all(
@@ -543,11 +559,7 @@ if drafts is None and os.getenv("GEMINI_API_KEY"):
 if drafts is None:
     raise SystemExit("Все модели ИИ недоступны")
 
-counts = {
-    "own": 0,
-    "federal": 0,
-    "regional": 0,
-}
+counts = dict.fromkeys(QUOTAS, 0)
 
 for draft in drafts:
     counts[draft["category"]] += 1
