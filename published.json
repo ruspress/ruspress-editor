@@ -230,5 +230,20 @@
     "fingerprint": "5a77a3f4c8d979301b5e8b9d533a6bfcdba1d0c39eb40854dde0eea3f76859c0",
     "message_id": 307,
     "published_at": "2026-11-25T18:37:14.866497+03:00"
+  },
+  {
+    "date": "2026-11-25",
+    "slot": "2026-11-25:queue:10",
+    "category": "federal",
+    "headline": "Путин поручил построить пять новых ГЭС и установить накопители энергии на Дальнем Востоке",
+    "source_ids": [
+      "719e1f524cd1eb12a899a3f1a7b0f607e0ae09bcafb6a4027722a969720f74e0"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-25T19:45:44.416285+03:00",
+    "fingerprint": "f032a5f4616f4cb4a0e8686d48f52b43727194c3fafbb0abfe2f9e33b843381e"
   }
 ]
