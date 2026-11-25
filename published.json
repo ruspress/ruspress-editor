@@ -264,5 +264,20 @@
     "fingerprint": "20439e69e54503cc23f972962af9a099495365c4d4c2df65b25a0fe93dee3efe",
     "message_id": 309,
     "published_at": "2026-11-25T20:44:23.320465+03:00"
+  },
+  {
+    "date": "2026-11-25",
+    "slot": "2026-11-25:queue:12",
+    "category": "federal",
+    "headline": "Министр обороны Израиля заявил, что Иран разрабатывает химическое оружие",
+    "source_ids": [
+      "0d6cc1526f313025a10fc333e3bd62549eba55d0bfa7140daa15fcc29493302b"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-25T21:32:40.318356+03:00",
+    "fingerprint": "cb98e28b1a22c117bd3baa49c3d5e7491dfbea46f23230bd0494688a32dafab8"
   }
 ]
