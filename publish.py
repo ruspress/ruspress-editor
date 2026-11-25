@@ -20,6 +20,8 @@ MODELS = [
     "openai/gpt-oss-120b",
 ]
 
+import telegram_source
+
 ALLOWED_DOMAINS = {
     "ruspress.ru", "tass.ru", "ria.ru",
     "interfax.ru", "rbc.ru", "kommersant.ru",
@@ -34,6 +36,7 @@ LIMITS = {
     "own": 4,
     "federal": 8,
     "regional": 8,
+    "soloviev": 10,
 }
 
 TODAY = datetime.now(
@@ -257,7 +260,17 @@ def review(draft):
     fragments = []
 
     for source in draft["sources"]:
-        article = read_article(source["link"])
+        url = source["link"]
+        post = telegram_source.POST.fullmatch(url)
+        if post:
+            try:
+                items = telegram_source.collect(f"{telegram_source.FEED}/{post[1]}")
+            except Exception:
+                items = []
+            article = next((item["summary"] for item in items
+                            if item["link"].lower() == url.lower()), "")
+        else:
+            article = read_article(url)
 
         if len(article) < 150:
             print(
