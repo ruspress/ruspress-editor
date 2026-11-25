@@ -162,5 +162,20 @@
     "fingerprint": "9bd494936c915edeb5c37f8691869bd400f3b005d98fff21126f033719f9c9cd",
     "message_id": 302,
     "published_at": "2026-11-25T13:53:15.005202+03:00"
+  },
+  {
+    "date": "2026-11-25",
+    "slot": "2026-11-25:queue:6",
+    "category": "federal",
+    "headline": "Путин поручил до конца 2026 года утвердить программу создания ЦОД в угледобывающих регионах",
+    "source_ids": [
+      "f9458408d13b2cf7373508f3a9de12b3fdb8447fe5adc7e16e73de13bb869556"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": null,
+    "photo_kind": null,
+    "created_at": "2026-11-25T14:53:51.462254+03:00",
+    "fingerprint": "effcfce64cf964a3bbcb58230c258d95c8d59a5df4b3169227c1dc4716bf17ad"
   }
 ]
