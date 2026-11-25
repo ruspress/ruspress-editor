@@ -290,11 +290,13 @@
     "source_ids": [
       "50dba0587090599b6b7fa2cfba3ad884271bb81ed1c1a9a119a144b29f2cb6cb"
     ],
-    "status": "pending",
+    "status": "published",
     "has_photo": false,
     "photo_source": null,
     "photo_kind": null,
     "created_at": "2026-11-25T22:39:13.062997+03:00",
-    "fingerprint": "664eeaa7dfe1e8a563313bc566a28b392fd80031f8c015a7026ef2e4c62739bc"
+    "fingerprint": "664eeaa7dfe1e8a563313bc566a28b392fd80031f8c015a7026ef2e4c62739bc",
+    "message_id": 311,
+    "published_at": "2026-11-25T22:39:15.046503+03:00"
   }
 ]
