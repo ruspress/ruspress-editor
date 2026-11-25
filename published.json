@@ -128,5 +128,20 @@
     "fingerprint": "899630695f393ed7f75767b1bb8bff44894ddaad5129e7f5ed1a193646c7088c",
     "message_id": 300,
     "published_at": "2026-11-25T11:39:52.906035+03:00"
+  },
+  {
+    "date": "2026-11-25",
+    "slot": "2026-11-25:queue:4",
+    "category": "federal",
+    "headline": "Российские и израильские дипломаты обсудили ситуацию в ближневосточном регионе",
+    "source_ids": [
+      "45f9a97b34cb1f5801754ea5e8253fdc120eec8c33f21cf8d891f8f48c0516fd"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-25T12:52:38.250070+03:00",
+    "fingerprint": "bcb139ab8f290bf88a7789265d406b02144d7bad67e0c7aaf678ce8322154ba4"
   }
 ]
