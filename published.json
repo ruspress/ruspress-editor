@@ -281,5 +281,20 @@
     "fingerprint": "cb98e28b1a22c117bd3baa49c3d5e7491dfbea46f23230bd0494688a32dafab8",
     "message_id": 310,
     "published_at": "2026-11-25T21:32:42.488666+03:00"
+  },
+  {
+    "date": "2026-11-25",
+    "slot": "2026-11-25:queue:13",
+    "category": "federal",
+    "headline": "Индексы Dow Jones выросли, а S&P 500 и Nasdaq упали в торгах во вторник",
+    "source_ids": [
+      "50dba0587090599b6b7fa2cfba3ad884271bb81ed1c1a9a119a144b29f2cb6cb"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": null,
+    "photo_kind": null,
+    "created_at": "2026-11-25T22:39:13.062997+03:00",
+    "fingerprint": "664eeaa7dfe1e8a563313bc566a28b392fd80031f8c015a7026ef2e4c62739bc"
   }
 ]
