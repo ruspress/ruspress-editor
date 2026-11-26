@@ -400,5 +400,20 @@
     "fingerprint": "65497b2dbc3bdf637e64ddc4e5fecea7b140f0c84b37d66d0855d9ce2654cdad",
     "message_id": 318,
     "published_at": "2026-11-26T14:53:48.073309+03:00"
+  },
+  {
+    "date": "2026-11-26",
+    "slot": "2026-11-26:queue:6",
+    "category": "regional",
+    "headline": "В Самарской области более 2500 домов остались без электроэнергии после атаки дрона",
+    "source_ids": [
+      "f0e38ddac93e19e6a2463f2625e195e978b9771073df0a9c571c244a6ec255dd"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-26T16:05:38.894243+03:00",
+    "fingerprint": "1c9ad15201b23ecda95c05ed19440015a011886ff6bf3b36f09f00b6cd2e2e57"
   }
 ]
