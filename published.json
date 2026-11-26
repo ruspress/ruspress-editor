@@ -349,5 +349,20 @@
     "fingerprint": "b81da96b95ed9e0a06389dd0391d51e7ff3480accd6c12a387797ed4aa11f459",
     "message_id": 315,
     "published_at": "2026-11-26T11:37:28.808470+03:00"
+  },
+  {
+    "date": "2026-11-26",
+    "slot": "2026-11-26:queue:3",
+    "category": "soloviev",
+    "headline": "Премьер‑министр Армении Пашинян готовится к визиту в Москву, сообщает пресс‑секретарь",
+    "source_ids": [
+      "bfa0f805b2b0f4e36eba2359db7ad105f91b68bb42f2e6fbfd1c28764e4bafa0"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": "https://t.me/SolovievLive/394221",
+    "photo_kind": "photo",
+    "created_at": "2026-11-26T12:48:37.294899+03:00",
+    "fingerprint": "31a00b6a272d6e170e3c27086ac90ae8fa572a883313af7348ba7eb7276358dd"
   }
 ]
