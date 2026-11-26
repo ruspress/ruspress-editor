@@ -332,5 +332,20 @@
     "fingerprint": "23a5ec85582417f39319a0dd8443c88f869c860b0907933d9c620e31f8628c59",
     "message_id": 314,
     "published_at": "2026-11-26T10:04:04.106483+03:00"
+  },
+  {
+    "date": "2026-11-26",
+    "slot": "2026-11-26:queue:2",
+    "category": "federal",
+    "headline": "Лукашенко допускает вывод российского ядерного оружия из Беларуси",
+    "source_ids": [
+      "58083167b36700ffb3316321523b4e4699e9a0f4fc13d31cc842f7284d1b25d0"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-26T11:37:26.518880+03:00",
+    "fingerprint": "b81da96b95ed9e0a06389dd0391d51e7ff3480accd6c12a387797ed4aa11f459"
   }
 ]
