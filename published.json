@@ -434,5 +434,20 @@
     "fingerprint": "5c6b6a080f7b4d5bcbb9f1eac2d3a35d830c950410ba3cd24325d8b6e0b1dbbf",
     "message_id": 323,
     "published_at": "2026-11-26T17:28:41.398582+03:00"
+  },
+  {
+    "date": "2026-11-26",
+    "slot": "2026-11-26:queue:8",
+    "category": "federal",
+    "headline": "Россия передала США и Украине детали будущего решения конфликта в Абу‑Даби",
+    "source_ids": [
+      "40a6631195f72c9850a4f60ff5ac3cdb72e143385f360011ebd277780ab8c270"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-26T18:34:00.616674+03:00",
+    "fingerprint": "e56fd82b089e55fe8fef2e3b8606aa98f125a49cc692c0675384494795572ed7"
   }
 ]
