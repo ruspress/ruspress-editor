@@ -307,11 +307,13 @@
     "source_ids": [
       "836b5ba0ca1b9e1a7e959e73801f8e95e2ef27fc766915e6c92234e820b1c07e"
     ],
-    "status": "pending",
+    "status": "published",
     "has_photo": false,
-    "photo_source": "https://t.me/SolovievLive/394184",
-    "photo_kind": "photo",
+    "photo_source": null,
+    "photo_kind": null,
     "created_at": "2026-11-26T08:55:13.188048+03:00",
-    "fingerprint": "150e81337a07587c3974fb4897c869f7a699c8bc43189b9ad0a97428f354affd"
+    "fingerprint": "150e81337a07587c3974fb4897c869f7a699c8bc43189b9ad0a97428f354affd",
+    "message_id": 313,
+    "published_at": "2026-11-26T08:55:15.068105+03:00"
   }
 ]
