@@ -468,5 +468,20 @@
     "fingerprint": "b459a0dc693cf125fcff3800ca80c64548929505df9992a84af9833728123f39",
     "message_id": 325,
     "published_at": "2026-11-26T19:45:27.485352+03:00"
+  },
+  {
+    "date": "2026-11-26",
+    "slot": "2026-11-26:queue:10",
+    "category": "regional",
+    "headline": "Стоимость красной икры выросла почти на 20 % по сравнению с сентябрем",
+    "source_ids": [
+      "91a6cae8dd3d1dde89bb7722e8e549ad98255cfa05f9bf0e5b96e7f469c1345c"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-26T20:50:15.696732+03:00",
+    "fingerprint": "432794a3c29fad9c4092a2bb8b3d9ce8c18c90b9ca2b2c8e882ec64f4ffb4cba"
   }
 ]
