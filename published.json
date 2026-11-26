@@ -451,5 +451,20 @@
     "fingerprint": "e56fd82b089e55fe8fef2e3b8606aa98f125a49cc692c0675384494795572ed7",
     "message_id": 324,
     "published_at": "2026-11-26T18:34:03.540664+03:00"
+  },
+  {
+    "date": "2026-11-26",
+    "slot": "2026-11-26:queue:9",
+    "category": "federal",
+    "headline": "Во Франции наложен обеспечительный арест на активы Google на €1,9 млрд по иску российской компании",
+    "source_ids": [
+      "56e0f363ab369dbaabb69bc802321a57aec58a593b44e6889a6a97487d3756f8"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-26T19:45:25.520130+03:00",
+    "fingerprint": "b459a0dc693cf125fcff3800ca80c64548929505df9992a84af9833728123f39"
   }
 ]
