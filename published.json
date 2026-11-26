@@ -383,5 +383,20 @@
     "fingerprint": "d6457d7c01a1de3429a8a3583f7a827da096e43a5eb71297ae3c0676f222baf4",
     "message_id": 317,
     "published_at": "2026-11-26T13:53:47.268051+03:00"
+  },
+  {
+    "date": "2026-11-26",
+    "slot": "2026-11-26:queue:5",
+    "category": "soloviev",
+    "headline": "Лукашенко заявил, что Минск готов стать площадкой для переговоров по украинскому конфликту",
+    "source_ids": [
+      "f76c5e6130cfa3b09288b81b7597c299418317148e276b74c6a23f3e7f541410"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": "https://t.me/SolovievLive/394240",
+    "photo_kind": "video",
+    "created_at": "2026-11-26T14:53:45.846656+03:00",
+    "fingerprint": "65497b2dbc3bdf637e64ddc4e5fecea7b140f0c84b37d66d0855d9ce2654cdad"
   }
 ]
