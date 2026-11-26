@@ -315,5 +315,20 @@
     "fingerprint": "150e81337a07587c3974fb4897c869f7a699c8bc43189b9ad0a97428f354affd",
     "message_id": 313,
     "published_at": "2026-11-26T08:55:15.068105+03:00"
+  },
+  {
+    "date": "2026-11-26",
+    "slot": "2026-11-26:queue:1",
+    "category": "regional",
+    "headline": "Задержки поездов в Ростовской области и Краснодарском крае до 11 часов из‑за упавших деревьев",
+    "source_ids": [
+      "d5c415e2aab2b619c8f862dfa4dd840bc6c633996a420da6365d504b846f3592"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-26T10:04:01.629855+03:00",
+    "fingerprint": "23a5ec85582417f39319a0dd8443c88f869c860b0907933d9c620e31f8628c59"
   }
 ]
