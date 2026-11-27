@@ -604,5 +604,20 @@
     "fingerprint": "0a9edc0bb9372682b9fd4d09aeaad02fda8b70c7b833f18a5774974e6991f391",
     "message_id": 333,
     "published_at": "2026-11-27T13:50:04.865293+03:00"
+  },
+  {
+    "date": "2026-11-27",
+    "slot": "2026-11-27:queue:5",
+    "category": "soloviev",
+    "headline": "Украинский производитель туалетной бумаги «Блуми» объявил о прекращении работы",
+    "source_ids": [
+      "1e019309dde31502d5ad3eb04be2d12848e3606f60368c3e1778d3595271b46f"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": "https://t.me/SolovievLive/394380",
+    "photo_kind": "video",
+    "created_at": "2026-11-27T14:50:39.488531+03:00",
+    "fingerprint": "05a2e08597c86435143a65fb0844cdce529cbba979ba353e3a1746d3b4750c89"
   }
 ]
