@@ -553,5 +553,20 @@
     "fingerprint": "746ed82b8d8f652a99ab98fb181d8818df89fe4893e912f93426a5bda7623ef0",
     "message_id": 330,
     "published_at": "2026-11-27T10:08:57.762490+03:00"
+  },
+  {
+    "date": "2026-11-27",
+    "slot": "2026-11-27:queue:2",
+    "category": "regional",
+    "headline": "Байлы в Прикамье конфисковали Porsche Cayenne из‑за долгов прежнего владельца",
+    "source_ids": [
+      "72436c102cff6c0949d8c3c103902c455355b30bf7ac2e078268eaf595d2e479"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-27T11:36:26.826289+03:00",
+    "fingerprint": "e055444079f64de57534d15ed7ca3d8ca0746f69d4ca9fe1281deb8926f0a572"
   }
 ]
