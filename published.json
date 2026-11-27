@@ -621,5 +621,20 @@
     "fingerprint": "05a2e08597c86435143a65fb0844cdce529cbba979ba353e3a1746d3b4750c89",
     "message_id": 334,
     "published_at": "2026-11-27T14:50:41.274029+03:00"
+  },
+  {
+    "date": "2026-11-27",
+    "slot": "2026-11-27:queue:6",
+    "category": "own",
+    "headline": "Московское избиение студента РАНХиГС и убийство 17‑летнего школьника в Челябинске в 2023 году",
+    "source_ids": [
+      "d23063d55dd1aad2b522415363a1f9bc2979c33c91c1c57c1bf713b71cf5cf9d"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-27T16:00:41.600282+03:00",
+    "fingerprint": "e0369bec06f3523c21a97851efff84776741521d066df9b6e22c721761c3e1be"
   }
 ]
