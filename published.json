@@ -519,5 +519,20 @@
     "fingerprint": "3ea1f9b5f7b115801a124c21edfc8d3bedee2abe44f310e0ae5cf9221f262025",
     "message_id": 328,
     "published_at": "2026-11-26T22:57:25.801043+03:00"
+  },
+  {
+    "date": "2026-11-27",
+    "slot": "2026-11-27:queue:0",
+    "category": "soloviev",
+    "headline": "Эстония закрыла границу с Россией – премьер Латвии назвал это ошибкой",
+    "source_ids": [
+      "e4cd271413d256593cb50adc5c825f409d50e8d9fbfe01c1bc07708d5451115b"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": "https://t.me/SolovievLive/394335",
+    "photo_kind": "photo",
+    "created_at": "2026-11-27T08:56:33.897724+03:00",
+    "fingerprint": "9457dc3561862711a2662b29a197906d14d2b42b683ae525e5c7bcb5db9f75c8"
   }
 ]
