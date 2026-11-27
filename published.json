@@ -587,5 +587,20 @@
     "fingerprint": "976029a86bbfe349e7e4cf811181379e99b5491d4d390391a12720a18bd975d3",
     "message_id": 332,
     "published_at": "2026-11-27T12:47:38.955452+03:00"
+  },
+  {
+    "date": "2026-11-27",
+    "slot": "2026-11-27:queue:4",
+    "category": "soloviev",
+    "headline": "В выпуске «Опасный бизнес» обсудили правила лесной разведки и опасности одиночной обороны",
+    "source_ids": [
+      "22d27f93c256c55a48eb760f4f031d643d4dac4e353c87a82be8ccf703481e2a"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": "https://t.me/SolovievLive/394369",
+    "photo_kind": "photo",
+    "created_at": "2026-11-27T13:50:02.495269+03:00",
+    "fingerprint": "0a9edc0bb9372682b9fd4d09aeaad02fda8b70c7b833f18a5774974e6991f391"
   }
 ]
