@@ -570,5 +570,20 @@
     "fingerprint": "e055444079f64de57534d15ed7ca3d8ca0746f69d4ca9fe1281deb8926f0a572",
     "message_id": 331,
     "published_at": "2026-11-27T11:36:29.196594+03:00"
+  },
+  {
+    "date": "2026-11-27",
+    "slot": "2026-11-27:queue:3",
+    "category": "soloviev",
+    "headline": "Обмен телами погибших: Россия передала Украине 250 тел, Украина – 22",
+    "source_ids": [
+      "8d4ec27fe2d98a73b211f8f4b0eadfb63d28553032ef0d61c3f9b1518d68eec1"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": "https://t.me/SolovievLive/394361",
+    "photo_kind": "video",
+    "created_at": "2026-11-27T12:47:36.278341+03:00",
+    "fingerprint": "976029a86bbfe349e7e4cf811181379e99b5491d4d390391a12720a18bd975d3"
   }
 ]
