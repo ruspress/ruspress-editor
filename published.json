@@ -774,5 +774,20 @@
     "fingerprint": "8f06937aa8c72de60022c4984b015931b30b8bcf44d4516687aea665bb2678fb",
     "message_id": 342,
     "published_at": "2026-11-28T15:50:06.162501+03:00"
+  },
+  {
+    "date": "2026-11-28",
+    "slot": "2026-11-28:queue:8",
+    "category": "soloviev",
+    "headline": "CNN: Чиновники Трампа переезжают на военные базы",
+    "source_ids": [
+      "852e90814db51173bb78249c0fcae4475066fc0caff3685d567ec87265762782"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": "https://t.me/SolovievLive/394593",
+    "photo_kind": "photo",
+    "created_at": "2026-11-28T16:57:48.246633+03:00",
+    "fingerprint": "3e09dcf124f83c6bf466bac9fa6dbbd31d63723f519541b79443cd5a774bc661"
   }
 ]
