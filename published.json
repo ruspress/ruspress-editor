@@ -638,5 +638,20 @@
     "fingerprint": "e0369bec06f3523c21a97851efff84776741521d066df9b6e22c721761c3e1be",
     "recovery_note": "Interrupted sending; verify in Telegram. No automatic resend.",
     "recovered_at": "2026-11-28T09:38:01.783645+03:00"
+  },
+  {
+    "date": "2026-11-28",
+    "slot": "2026-11-28:queue:0",
+    "category": "own",
+    "headline": "Утерянная картина «Коронация Миндаугаса» найдена у мусорного контейнера в Вильнюсе",
+    "source_ids": [
+      "4e13a1ab5908e499a65762a008aeac689a7249c21bb8e149b7df8708b2c7cd62"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-28T09:54:55.500930+03:00",
+    "fingerprint": "f0630ffedf030768d0e77b8b2ac60a6f6590eafdea55e934e77a6aefae26daf2"
   }
 ]
