@@ -672,5 +672,20 @@
     "fingerprint": "de9b43d9cad9246b79a4e6672426714b911c15a833f1a55c90b2f150a90bc557",
     "message_id": 336,
     "published_at": "2026-11-28T09:58:53.479036+03:00"
+  },
+  {
+    "date": "2026-11-28",
+    "slot": "2026-11-28:queue:2",
+    "category": "soloviev",
+    "headline": "Вице‑премьер России заявил о поддержке Турции в развитии энергетического хаба",
+    "source_ids": [
+      "e875605d116e3b65c4f9031416ba792158bffde576a94eee9961af4f031662d9"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": "https://t.me/SolovievLive/394509",
+    "photo_kind": "photo",
+    "created_at": "2026-11-28T11:14:46.260374+03:00",
+    "fingerprint": "9f5285e0232bb1aded81d83346184ee3c81bf5c5bbf7ffed9b40beb207ebac9e"
   }
 ]
