@@ -34,8 +34,8 @@ ALLOWED_DOMAINS = {
 
 LIMITS = {
     "own": 4,
-    "federal": 8,
-    "regional": 8,
+    "federal": 12,
+    "regional": 12,
     "soloviev": 10,
 }
 

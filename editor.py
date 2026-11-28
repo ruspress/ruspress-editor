@@ -15,6 +15,9 @@ MODE = os.getenv('EDITOR_MODE','test')
 MOSCOW = ZoneInfo('Europe/Moscow')
 LIMITS = {'own':4,'federal':8,'regional':8,'soloviev':10}
 RESERVE = {'own':6,'federal':12,'regional':12,'soloviev':12}
+# Extra federal/regional slots replace unavailable categories; daily total stays 30.
+FLEX_LIMITS = {'own':4,'federal':12,'regional':12,'soloviev':10}
+DAILY_LIMIT = 30
 LABELS = {'own':'МАТЕРИАЛЫ РЕДАКЦИИ','federal':'РОССИЯ И МИР','regional':'РЕГИОНЫ И ЭКОНОМИКА','soloviev':'РОССИЯ И МИР'}
 ORDER = (['federal','soloviev','regional','own','soloviev','federal','regional','soloviev',
           'federal','regional','soloviev','own','federal','regional','soloviev'] * 2)
@@ -161,6 +164,9 @@ def send_message(message,photo,source=None,kind=None):
         else:
             r=requests.post(base+'sendMessage',json={'chat_id':CHANNEL,'text':message,'parse_mode':'HTML','link_preview_options':{'is_disabled':True}},timeout=30)
         data=r.json()
+        if photo and r.status_code == 400 and data.get('ok') is False:
+            print('::warning::Telegram отклонил фото; отправка текстом.')
+            return send_message(message,None)
         if not data.get('ok'): raise RuntimeError('Telegram rejected')
         return data['result']['message_id'],bool(photo) or kind in ('photo','video')
     except Exception: raise RuntimeError('Ошибка Telegram. Проверь запись pending и канал.') from None
@@ -168,14 +174,40 @@ def send_message(message,photo,source=None,kind=None):
 def daily_records(history,now):
     return [x for x in history if isinstance(x,dict) and x.get('date')==now.date().isoformat() and x.get('status')=='published']
 
-def candidate(queue,history):
-    now=datetime.now(MOSCOW); minute=now.hour*60+now.minute
+def occupied_records(history, now):
+    # Uncertain deliveries may have reached Telegram. Reserve their slots and IDs.
+    return [x for x in history if isinstance(x,dict) and x.get('date')==now.date().isoformat()
+            and x.get('status') in ('published','pending','delivery_unknown')]
+
+def recover_pending(history):
+    changed = False
+    for record in history:
+        if isinstance(record,dict) and record.get('status')=='pending':
+            record['status']='delivery_unknown'
+            record['recovery_note']='Interrupted sending; verify in Telegram. No automatic resend.'
+            record['recovered_at']=datetime.now(MOSCOW).isoformat()
+            print('::warning::Незавершённая отправка изолирована; проверьте канал:',record.get('headline',''))
+            changed = True
+    return changed
+
+def candidate(queue,history,now=None):
+    now=now or datetime.now(MOSCOW); minute=now.hour*60+now.minute
     if not 480<=minute<1380: return None
-    daily=daily_records(history,now); due=min(len(ORDER),(minute-480)//30+1)
+    daily=occupied_records(history,now); due=min(DAILY_LIMIT,len(ORDER),(minute-480)//30+1)
     if len(daily)>=due: return None
     used=counts(daily); wanted=counts([{'category':c} for c in ORDER[:due]])
-    options=[d for d in queue if fresh(d) and used[d['category']]<min(LIMITS[d['category']],wanted[d['category']])]
-    return min(options,key=lambda d:d['source_timestamp']) if options else None
+    eligible=[d for d in queue if fresh(d) and d.get('category') in FLEX_LIMITS
+              and used[d['category']]<FLEX_LIMITS[d['category']] and not duplicate(d,history)]
+    # Own material has priority when its planned slot is due.
+    own=[d for d in eligible if d['category']=='own' and used['own']<wanted['own']]
+    if own: return min(own,key=lambda d:d['source_timestamp'])
+    planned=[d for d in eligible if used[d['category']]<min(LIMITS[d['category']],wanted[d['category']])]
+    if planned: return min(planned,key=lambda d:d['source_timestamp'])
+    # No available material in the planned category: never leave a slot idle for that reason.
+    external=[d for d in eligible if d['category'] in ('federal','regional','soloviev')]
+    if external:
+        return min(external,key=lambda d:(used[d['category']]/LIMITS[d['category']],-d['source_timestamp']))
+    return min(eligible,key=lambda d:d['source_timestamp']) if eligible else None
 
 def publish(d,history,queue):
     now=datetime.now(MOSCOW); daily=daily_records(history,now)
@@ -183,9 +215,15 @@ def publish(d,history,queue):
     # Recheck time and eligibility after network requests.
     if candidate(queue,history) is not d: return False
     now=datetime.now(MOSCOW)
-    record={'date':now.date().isoformat(),'slot':f'{now.date()}:queue:{len(daily)}','category':d['category'],'headline':d['headline'],'source_ids':d['source_ids'],'status':'pending','has_photo':bool(photo),'photo_source':source,'photo_kind':kind,'created_at':now.isoformat(),'fingerprint':hashlib.sha256(message.encode()).hexdigest()}
+    record={'date':now.date().isoformat(),'slot':f'{now.date()}:queue:{len(occupied_records(history,now))}','category':d['category'],'headline':d['headline'],'source_ids':d['source_ids'],'status':'pending','has_photo':bool(photo),'photo_source':source,'photo_kind':kind,'created_at':now.isoformat(),'fingerprint':hashlib.sha256(message.encode()).hexdigest()}
     history.append(record); save_state(history,queue)
-    record['message_id'], attached = send_message(message,photo,source,kind)
+    try:
+        record['message_id'], attached = send_message(message,photo,source,kind)
+    except Exception:
+        # Do not retry an ambiguous request: Telegram may have accepted it.
+        recover_pending(history)
+        queue.remove(d); save_state(history,queue)
+        raise RuntimeError('Отправка не подтверждена; новость изолирована, следующие запуски продолжатся.') from None
     if not attached:
         record.update(photo_source=None, photo_kind=None)
     record['has_photo'] = attached and kind != 'video'
@@ -197,8 +235,9 @@ def publish(d,history,queue):
 def main():
     if MODE not in ('test','single','auto'): raise SystemExit('Неизвестный режим')
     history=load_json(HISTORY); queue=load_json(QUEUE)
-    if any(isinstance(x,dict) and x.get('status')=='pending' for x in history): raise SystemExit('Незавершённая отправка. Проверь канал.')
+    recovered=recover_pending(history)
     queue=clean_queue(queue,history); sent=False
+    if recovered: save_state(history,queue)
     if MODE!='test':
         d=candidate(queue,history)
         if d: sent=publish(d,history,queue)
