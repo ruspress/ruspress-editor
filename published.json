@@ -740,5 +740,20 @@
     "fingerprint": "c66f08ba72deb9150a323bb9ea73eb3b0a5183830fbeec022bcec95cf9ca4627",
     "message_id": 340,
     "published_at": "2026-11-28T13:59:21.613458+03:00"
+  },
+  {
+    "date": "2026-11-28",
+    "slot": "2026-11-28:queue:6",
+    "category": "federal",
+    "headline": "Правительство утвердило технологический сбор на электронику, действие с декабря",
+    "source_ids": [
+      "2fe1de3ce09ea1e661831bc84899ed0ce25e046f9e0629e177983b745edc21c3"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-28T14:48:49.490710+03:00",
+    "fingerprint": "f2dbdcdbdf8f32053b3aab9e541df5a97dc0e0d2790c2e6631c7ecceaed21c0d"
   }
 ]
