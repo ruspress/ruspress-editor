@@ -655,5 +655,20 @@
     "fingerprint": "f0630ffedf030768d0e77b8b2ac60a6f6590eafdea55e934e77a6aefae26daf2",
     "message_id": 335,
     "published_at": "2026-11-28T09:54:57.618699+03:00"
+  },
+  {
+    "date": "2026-11-28",
+    "slot": "2026-11-28:queue:1",
+    "category": "regional",
+    "headline": "В ДТП на трассе Екатеринбург‑Тюмень погибла 6‑летняя девочка",
+    "source_ids": [
+      "052d44779b065947ae872c2c4dfbca1de8eef923a7661e6a263cd836ab583fb6"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-28T09:58:50.863319+03:00",
+    "fingerprint": "de9b43d9cad9246b79a4e6672426714b911c15a833f1a55c90b2f150a90bc557"
   }
 ]
