@@ -757,5 +757,20 @@
     "fingerprint": "f2dbdcdbdf8f32053b3aab9e541df5a97dc0e0d2790c2e6631c7ecceaed21c0d",
     "message_id": 341,
     "published_at": "2026-11-28T14:48:52.261091+03:00"
+  },
+  {
+    "date": "2026-11-28",
+    "slot": "2026-11-28:queue:7",
+    "category": "soloviev",
+    "headline": "Высший уголовный суд Хорватии отменил экстрадицию украинца Журавлева в Германию",
+    "source_ids": [
+      "ac7dc26a7b4d879ac741b786daec1a29eecdfbe05ed58d412fd81a3f27ea8fbb"
+    ],
+    "status": "pending",
+    "has_photo": false,
+    "photo_source": "https://t.me/SolovievLive/394589",
+    "photo_kind": "photo",
+    "created_at": "2026-11-28T15:50:04.104369+03:00",
+    "fingerprint": "8f06937aa8c72de60022c4984b015931b30b8bcf44d4516687aea665bb2678fb"
   }
 ]
