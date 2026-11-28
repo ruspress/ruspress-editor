@@ -723,5 +723,20 @@
     "fingerprint": "8bbe4649b7f1bd27bf6e1ab3510c8d9f7d40c7038609a8931b9baf96bf42d6d0",
     "message_id": 339,
     "published_at": "2026-11-28T13:01:52.878175+03:00"
+  },
+  {
+    "date": "2026-11-28",
+    "slot": "2026-11-28:queue:5",
+    "category": "own",
+    "headline": "Дом из GTA, ставший реальностью, выставлен на продажу за 60 млн рублей",
+    "source_ids": [
+      "3f2a9a4b229690de28809d304aface3b687c551436c4388c03cfd69c8badd016"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-28T13:59:19.790286+03:00",
+    "fingerprint": "c66f08ba72deb9150a323bb9ea73eb3b0a5183830fbeec022bcec95cf9ca4627"
   }
 ]
