@@ -689,5 +689,20 @@
     "fingerprint": "9f5285e0232bb1aded81d83346184ee3c81bf5c5bbf7ffed9b40beb207ebac9e",
     "message_id": 337,
     "published_at": "2026-11-28T11:14:48.554140+03:00"
+  },
+  {
+    "date": "2026-11-28",
+    "slot": "2026-11-28:queue:3",
+    "category": "regional",
+    "headline": "Суд Республики Коми обязал газодобывающую компанию выплатить почти 2 млн рублей работнику",
+    "source_ids": [
+      "2b8cbb42886d77282079757781100efb23d7d8dff3dc57a6a277ecaba4660ec2"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-28T12:10:29.602316+03:00",
+    "fingerprint": "77c44a617c8fb5e25ffdfa1efe5ba4f4640d36159536799775ecdc9d766ee93c"
   }
 ]
