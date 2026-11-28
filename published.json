@@ -808,5 +808,20 @@
     "fingerprint": "807f66fc9560cac2c8c92c6bdfb5ef0fa1ff871450ffb5a4bc8bd8b1b51f43c8",
     "message_id": 344,
     "published_at": "2026-11-28T17:47:17.689957+03:00"
+  },
+  {
+    "date": "2026-11-28",
+    "slot": "2026-11-28:queue:10",
+    "category": "federal",
+    "headline": "Rheinmetall может отказаться от строительства завода артиллерийских снарядов в Украине",
+    "source_ids": [
+      "56d3aa640e62e8f683fa9d62df9f0b005d323cd875bb10a323da5dd94b036e0c"
+    ],
+    "status": "pending",
+    "has_photo": true,
+    "photo_source": null,
+    "photo_kind": "card",
+    "created_at": "2026-11-28T18:39:42.039890+03:00",
+    "fingerprint": "566abc1d2cffde63dd855b0dcc568fe4d06c431b42c65e27ff673ec2518ede75"
   }
 ]
