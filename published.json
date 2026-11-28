@@ -800,11 +800,13 @@
     "source_ids": [
       "4bcf346e4dd2542f557e1fb211f0ae6880df8814f0010bd2a7794849e464c405"
     ],
-    "status": "pending",
+    "status": "published",
     "has_photo": true,
     "photo_source": null,
     "photo_kind": "card",
     "created_at": "2026-11-28T17:47:15.671860+03:00",
-    "fingerprint": "807f66fc9560cac2c8c92c6bdfb5ef0fa1ff871450ffb5a4bc8bd8b1b51f43c8"
+    "fingerprint": "807f66fc9560cac2c8c92c6bdfb5ef0fa1ff871450ffb5a4bc8bd8b1b51f43c8",
+    "message_id": 344,
+    "published_at": "2026-11-28T17:47:17.689957+03:00"
   }
 ]
