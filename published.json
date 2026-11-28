@@ -630,11 +630,13 @@
     "source_ids": [
       "d23063d55dd1aad2b522415363a1f9bc2979c33c91c1c57c1bf713b71cf5cf9d"
     ],
-    "status": "pending",
+    "status": "delivery_unknown",
     "has_photo": true,
     "photo_source": null,
     "photo_kind": "card",
     "created_at": "2026-11-27T16:00:41.600282+03:00",
-    "fingerprint": "e0369bec06f3523c21a97851efff84776741521d066df9b6e22c721761c3e1be"
+    "fingerprint": "e0369bec06f3523c21a97851efff84776741521d066df9b6e22c721761c3e1be",
+    "recovery_note": "Interrupted sending; verify in Telegram. No automatic resend.",
+    "recovered_at": "2026-11-28T09:38:01.783645+03:00"
   }
 ]
